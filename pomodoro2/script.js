@@ -1,3 +1,19 @@
+// Notion Background Theme Detection
+(function(){
+  function setBodyBackground(){
+    try{
+      const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.body.style.background = isDark ? '#191919' : '#ffffff';
+    } catch(e) {
+      document.body.style.background = '#ffffff';
+    }
+  }
+  if(window.matchMedia){
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(setBodyBackground);
+  }
+  setBodyBackground();
+})();
+
 function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}const { Component } = React;
 
 class App extends Component {

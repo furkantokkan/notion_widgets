@@ -3,20 +3,26 @@
 /* General */
 
 body {
-  font-family: 'Sans serif', ;
-  background-color: #D1C4E9; color: #D1C4E9
+  font-family: 'Sans serif', sans-serif;
+  background: transparent;
+  color: #D1C4E9;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 button,
 button:active {
-  background-color: rgb (209, 196, 233);
+  background-color: rgb(209, 196, 233);
   border: none;
   width: 42px;
   height: 40px;
@@ -25,6 +31,7 @@ button:active {
   box-shadow: 0.2em 0.2em rgb(209, 196, 233); 
   -webkit-box-shadow: 0.2em 0.2em rgb(209, 196, 233); 
   -moz-box-shadow: 0.2em 0.2em rgb(209, 196, 233);
+  cursor: pointer;
 }
 
 button:focus {
@@ -39,9 +46,11 @@ button:focus {
 .clock-container {
   background-color: rgb(255,255,255); 
   width: 350px;
+  max-width: 100%;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 10px 10px lilás;
+  box-shadow: 10px 10px #D1C4E9;
+  box-sizing: border-box;
 }
 
 /* Display + Stop/Start/Reset Controls */
@@ -64,22 +73,24 @@ button:focus {
 }
 
 #timer-label {
-  font-size: 27px; color: #EDECE9;
+  font-size: 27px;
+  color: #EDECE9;
   text-align: center;
   padding-top: 10px;
   background-color: rgb(209, 196, 233);
   border-radius: 10px;
   height: 40px;
   flex: 2;
-  box-shadow: 3px 3px rgb() inset;
+  box-shadow: 3px 3px rgb(180, 167, 204) inset;
 }
 
 #timer-ssr {
   flex: 1;
   margin-left: 30px;
   display: flex;
-  justify-content: space-between;
-  flex-start: end;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
 }
 
 /* Timer Length Controls */
@@ -88,6 +99,7 @@ button:focus {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+  gap: 6px;
 }
 
 .inc-dec-btn-container {
@@ -95,25 +107,88 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 140px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
   height: 60px;
 }
 
 .break-container, 
 .session-container {
-  text-align: center; 
-/*   display: inline-block; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
   border: 2px solid rgb(209, 196, 233);
   padding: 10px;
   border-radius: 10px;
-  width: 50%;
+  width: calc(50% - 3px);
+  box-sizing: border-box;
+  min-height: 140px;
+}
+
+#break-label,
+#session-label {
+  min-height: 2.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
 }
 
 .timer-length {
   font-size: 2em;
+  margin-bottom: 10px;
 }
 
-.break-container,
-.inc-arrow {
-  margin-right: 12px;
+/* Responsive Design */
+@media screen and (max-width: 420px) {
+  .clock-container {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  #time-left {
+    font-size: 50px;
+    padding: 15px;
+  }
+  
+  #timer-label {
+    font-size: 22px;
+  }
+  
+  #timer-ssr {
+    margin-left: 15px;
+  }
+  
+  .length-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .break-container, 
+  .session-container {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .break-container {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #time-left {
+    font-size: 40px;
+    padding: 10px;
+  }
+  
+  .clock-container {
+    padding: 15px;
+  }
+  
+  #timer-label {
+    font-size: 18px;
+  }
 }

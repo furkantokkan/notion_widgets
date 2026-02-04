@@ -14,7 +14,8 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 10px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -96,7 +97,7 @@ button:focus {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 6px;
 }
 
 .inc-dec-btn-container {
@@ -106,23 +107,36 @@ button:focus {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  width: 140px;
+  width: 100%;
   height: 60px;
 }
 
 .break-container, 
 .session-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
-/*   display: inline-block; */
   border: 2px solid rgb(234,178,156);
   padding: 10px;
   border-radius: 10px;
-  width: 49.5%;
+  width: calc(50% - 3px);
   box-sizing: border-box;
+  min-height: 140px;
+}
+
+#break-label,
+#session-label {
+  min-height: 2.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
 }
 
 .timer-length {
   font-size: 2em;
+  margin-bottom: 10px;
 }
 
 /* Responsive Design */
