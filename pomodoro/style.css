@@ -4,13 +4,18 @@
 
 body {
   font-family: 'Roboto Mono', monospace;
- // background-color: #c2e6e8;
+  background: transparent;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 button,
@@ -24,6 +29,7 @@ button:active {
   box-shadow: 0.2em 0.2em rgb(194, 91, 44);
   -webkit-box-shadow: 0.2em 0.2em rgb(194, 91, 44);
   -moz-box-shadow: 0.2em 0.2em rgb(194, 91, 44);
+  cursor: pointer;
 }
 
 button:focus {
@@ -38,9 +44,11 @@ button:focus {
 .clock-container {
   background-color: rgb(240, 240, 190); 
   width: 350px;
+  max-width: 100%;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 10px 10px sienna;
+  box-sizing: border-box;
 }
 
 /* Display + Stop/Start/Reset Controls */
@@ -77,8 +85,9 @@ button:focus {
   flex: 1;
   margin-left: 30px;
   display: flex;
-  justify-content: space-between;
-  flex-start: end;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
 }
 
 /* Timer Length Controls */
@@ -87,6 +96,7 @@ button:focus {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+  gap: 8px;
 }
 
 .inc-dec-btn-container {
@@ -94,8 +104,10 @@ button:focus {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 12px;
   width: 140px;
-  height:60px;
+  height: 60px;
 }
 
 .break-container, 
@@ -105,14 +117,58 @@ button:focus {
   border: 2px solid rgb(234,178,156);
   padding: 10px;
   border-radius: 10px;
-  width: 48%;
+  width: 49.5%;
+  box-sizing: border-box;
 }
 
 .timer-length {
   font-size: 2em;
 }
 
-.break-container,
-.inc-arrow {
-  margin-right: 12px;
+/* Responsive Design */
+@media screen and (max-width: 420px) {
+  .clock-container {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  #time-left {
+    font-size: 50px;
+    padding: 15px;
+  }
+  
+  #timer-label {
+    font-size: 20px;
+  }
+  
+  #timer-ssr {
+    margin-left: 15px;
+  }
+  
+  .length-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .break-container, 
+  .session-container {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .break-container {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #time-left {
+    font-size: 40px;
+    padding: 10px;
+  }
+  
+  .clock-container {
+    padding: 15px;
+  }
 }
