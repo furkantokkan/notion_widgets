@@ -17,6 +17,14 @@ import ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
   setBodyBackground();
 })();
 
+const useAlternativeTheme = true;
+
+if (useAlternativeTheme) {
+  document.body.dataset.theme = "alternative";
+} else {
+  document.body.removeAttribute("data-theme");
+}
+
 const SESSION = "Session";
 const BREAK = "Break";
 const SESSIONLEN = 25;

@@ -2,9 +2,30 @@
 
 /* General */
 
+:root {
+  --text-color: #111111;
+  --card-bg: rgb(240, 240, 190);
+  --panel-bg: rgb(150, 180, 175);
+  --panel-shadow: rgb(121, 145, 141);
+  --accent: rgb(234, 178, 156);
+  --accent-shadow: rgb(194, 91, 44);
+  --card-shadow: sienna;
+}
+
+body[data-theme="alternative"] {
+  --text-color: #e8e6e3;
+  --card-bg: #2b2b2b;
+  --panel-bg: #3a3f44;
+  --panel-shadow: #1f2326;
+  --accent: #d98c5f;
+  --accent-shadow: #a8683b;
+  --card-shadow: #5a3a22;
+}
+
 body {
   font-family: 'Roboto Mono', monospace;
   background: transparent;
+  color: var(--text-color);
   margin: 0;
   padding: 0;
 }
@@ -21,34 +42,34 @@ body {
 
 button,
 button:active {
-  background-color: rgb(234,178,156);
+  background-color: var(--accent);
   border: none;
   width: 42px;
   height: 40px;
   border-radius: 100%;
   text-align: center;
-  box-shadow: 0.2em 0.2em rgb(194, 91, 44);
-  -webkit-box-shadow: 0.2em 0.2em rgb(194, 91, 44);
-  -moz-box-shadow: 0.2em 0.2em rgb(194, 91, 44);
+  box-shadow: 0.2em 0.2em var(--accent-shadow);
+  -webkit-box-shadow: 0.2em 0.2em var(--accent-shadow);
+  -moz-box-shadow: 0.2em 0.2em var(--accent-shadow);
   cursor: pointer;
 }
 
 button:focus {
   translate: 0.2em 0.2em;
-  box-shadow: 0.2em 0.2em rgb(194, 91, 44) inset;
-  -webkit-box-shadow: 0.2em 0.2em rgb(194, 91, 44) inset;
-  -moz-box-shadow: 0.2em 0.2em rgb(194, 91, 44) inset;
+  box-shadow: 0.2em 0.2em var(--accent-shadow) inset;
+  -webkit-box-shadow: 0.2em 0.2em var(--accent-shadow) inset;
+  -moz-box-shadow: 0.2em 0.2em var(--accent-shadow) inset;
 }
 
 /* Clock Body */
 
 .clock-container {
-  background-color: rgb(240, 240, 190); 
+  background-color: var(--card-bg); 
   width: 350px;
   max-width: 100%;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 10px 10px sienna;
+  box-shadow: 10px 10px var(--card-shadow);
   box-sizing: border-box;
 }
 
@@ -57,10 +78,10 @@ button:focus {
 #time-left {
   font-size: 70px;
   text-align: center;
-  background-color: rgb(150,180,175);
+  background-color: var(--panel-bg);
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 3px 3px rgb(121, 145, 141) inset;
+  box-shadow: 3px 3px var(--panel-shadow) inset;
 }
 
 #display-controls {
@@ -75,11 +96,11 @@ button:focus {
   font-size: 25px;
   text-align: center;
   padding-top: 2px;
-  background-color: rgb(150,180,175);
+  background-color: var(--panel-bg);
   border-radius: 10px;
   height: 40px;
   flex: 2;
-  box-shadow: 3px 3px rgb(121, 145, 141) inset;
+  box-shadow: 3px 3px var(--panel-shadow) inset;
 }
 
 #timer-ssr {
@@ -117,7 +138,7 @@ button:focus {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  border: 2px solid rgb(234,178,156);
+  border: 2px solid var(--accent);
   padding: 10px;
   border-radius: 10px;
   width: calc(50% - 3px);
@@ -144,6 +165,7 @@ button:focus {
   .clock-container {
     width: 100%;
     padding: 20px;
+    box-shadow: none;
   }
   
   #time-left {
