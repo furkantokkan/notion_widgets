@@ -17,10 +17,11 @@ import ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
   setBodyBackground();
 })();
 
-const useAlternativeTheme = true;
+// Theme options: "default", "alternative", "lofi-night"
+const selectedTheme = "lofi-night";
 
-if (useAlternativeTheme) {
-  document.body.dataset.theme = "alternative";
+if (selectedTheme && selectedTheme !== "default") {
+  document.body.dataset.theme = selectedTheme;
 } else {
   document.body.removeAttribute("data-theme");
 }
@@ -264,44 +265,66 @@ class SetTimerLength extends React.Component {
 
 
 class Timer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.buttonRefStartStop = React.createRef();
-    this.buttonRefReset = React.createRef();
+constructor(props) {
+  super(props);
+  this.buttonRefStartStop = React.createRef();
+  this.buttonRefReset = React.createRef();
+  this.buttonRefTheme = React.createRef();
+}
+
+toggleTheme() {
+  const themes = ["default", "alternative", "lofi-night"];
+  const currentTheme = document.body.dataset.theme || "default";
+  const currentIndex = themes.indexOf(currentTheme);
+  const nextIndex = (currentIndex + 1) % themes.length;
+  const nextTheme = themes[nextIndex];
+  
+  if (nextTheme === "default") {
+    document.body.removeAttribute("data-theme");
+  } else {
+    document.body.dataset.theme = nextTheme;
   }
+}
 
-  render() {
-    return /*#__PURE__*/(
-      React.createElement("div", null, /*#__PURE__*/
-      React.createElement("div", { id: "time-left" }, this.props.timeLeft), /*#__PURE__*/
-      React.createElement("div", { id: "display-controls" }, /*#__PURE__*/
-      React.createElement("div", { id: "timer-label" }, this.props.timerType), /*#__PURE__*/
-      React.createElement("div", { id: "timer-ssr" }, /*#__PURE__*/
-      React.createElement("button", {
-        ref: this.buttonRefStartStop,
-        id: "start-stop",
-        onClick: () => {
-          this.props.toggleStartStopTimer();
-          this.buttonRefStartStop.current.blur();
-        } }, /*#__PURE__*/
+render() {
+  return /*#__PURE__*/(
+    React.createElement("div", null, /*#__PURE__*/
+    React.createElement("div", { id: "time-left" }, this.props.timeLeft), /*#__PURE__*/
+    React.createElement("div", { id: "display-controls" }, /*#__PURE__*/
+    React.createElement("button", {
+      ref: this.buttonRefStartStop,
+      id: "start-stop",
+      onClick: () => {
+        this.props.toggleStartStopTimer();
+        this.buttonRefStartStop.current.blur();
+      } }, /*#__PURE__*/
 
-      React.createElement("i", { className: this.props.stopStartTimer, "aria-hidden": "true" })), /*#__PURE__*/
+    React.createElement("i", { className: this.props.stopStartTimer, "aria-hidden": "true" })), /*#__PURE__*/
 
-      React.createElement("button", {
-        ref: this.buttonRefReset,
-        id: "reset",
-        onClick: () => {
-          this.props.resetTimer();
-          this.buttonRefReset.current.blur();
-        } }, /*#__PURE__*/
+    React.createElement("button", {
+      ref: this.buttonRefReset,
+      id: "reset",
+      onClick: () => {
+        this.props.resetTimer();
+        this.buttonRefReset.current.blur();
+      } }, /*#__PURE__*/
 
-      React.createElement("i", { className: "fa fa-refresh", "aria-hidden": "true" }))))));
+    React.createElement("i", { className: "fa fa-refresh", "aria-hidden": "true" })), /*#__PURE__*/
+
+    React.createElement("button", {
+      ref: this.buttonRefTheme,
+      id: "theme-toggle",
+      onClick: () => {
+        this.toggleTheme();
+        this.buttonRefTheme.current.blur();
+      } }, /*#__PURE__*/
+
+    React.createElement("i", { className: "fa fa-paint-brush", "aria-hidden": "true" })))));
 
 
 
 
-
-  }}
+}}
 
 
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById("root"));

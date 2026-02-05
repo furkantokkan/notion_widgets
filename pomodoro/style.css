@@ -22,6 +22,17 @@ body[data-theme="alternative"] {
   --card-shadow: #5a3a22;
 }
 
+/* Lo-Fi Night Theme - Inspired by cozy night cityscape */
+body[data-theme="lofi-night"] {
+  --text-color: #e0fbfc;
+  --card-bg: #1b263b;
+  --panel-bg: #0d1b2a;
+  --panel-shadow: #051923;
+  --accent: #ff6b6b;
+  --accent-shadow: #c1121f;
+  --card-shadow: #0a1628;
+}
+
 body {
   font-family: 'Roboto Mono', monospace;
   background: transparent;
@@ -89,7 +100,8 @@ button:focus {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
 }
 
 #timer-label {
